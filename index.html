@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Motion-R1: Chain-of-Thought Reasoning and Reinforcement Learning for Human Motion Generation</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Motion-R1: Chain-of-Thought Reasoning and Reinforcement Learning for Human Motion Generation</h1>
+          <!-- <div class="is-size-3 publication-authors">
+          </div> -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              Runqi Ouyang<sup>1,2,*</sup>,</span>
+            <span class="author-block">
+              Haoyun Li<sup>1,2,*</sup>,</span>
+            <span class="author-block">
+              Zhenyuan Zhang<sup>1,3*</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://jeffwang987.github.io/">Xiaofeng Wang</a><sup>1</sup>,
+            </span>
+            <br>
+            <span class="author-block">
+              <a href="http://www.zhengzhu.net/">Zheng Zhu</a><sup>1,†</sup>,
+            </span>
+            <span class="author-block">
+              Guan Huang<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Xingang Wang<sup>1,†</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>GigaAI, <sup>2</sup>Institute of Automation, Chinese Academy of Sciences, <sup>3</sup>HKUST</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>*</sup>Equal Contribution</span>
+            <br>
+            <span class="author-block"><sup>†</sup>Corresponding Authors: <a href="mailto:zhengzhu@ieee.org">zhengzhu@ieee.org</a>, <a href="mailto:xingang.wang@ia.ac.cn">xingang.wang@ia.ac.cn</a></span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <!-- TODO: add arXiv link -->
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/EricGuo5513/momask-codes"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span> -->
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://huggingface.co/spaces/MeYourHint/MoMask" target="_blank"
+                class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fas fa-rocket"></i>
+                </span>
+                <span>Demo</span>
+                </a>
+              </span> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+        
+    <div class="hero-body has-text-centered">
+        <img src = "./static/images/motionr1-main.png" height="80%"></img><br>
+    </div>
+    <center><h2 class="title is-3">Abstract</h2></center>
+    <br>
+    <p>
+      Recent advances in large language models, especially in natural language understanding and reasoning, have opened new possibilities for text-to-motion generation. Although existing approaches have made notable progress in semantic alignment and motion synthesis, they often rely on end-to-end mapping strategies that fail to capture deep linguistic structures and logical reasoning. Consequently, generated motions tend to lack controllability, consistency, and diversity. To address these limitations, we propose <strong>Motion-R1</strong>, a unified motion-language modeling framework that integrates a Chain-of-Thought mechanism. By explicitly decomposing complex textual instructions into logically structured action paths, Motion-R1 provides high-level semantic guidance for motion generation, significantly enhancing the model's ability to interpret and execute multi-step, long-horizon, and compositionally rich commands. To train our model, we adopt Group Relative Policy Optimization, a reinforcement learning algorithm designed for large models, which leverages motion quality feedback to optimize reasoning chains and motion synthesis jointly. Extensive experiments across multiple benchmark datasets demonstrate that Motion-R1 achieves competitive or superior performance compared to state-of-the-art methods, particularly in scenarios requiring nuanced semantic understanding and long-term temporal coherence. The code, model and data will be publicly available. 
+    </p>
+    <br>
+    <!-- <div id="video-container">
+      <video id="video" muted controls playsinline>
+        <source src="./static/video/demo.mp4" type="video/mp4">
+      </video>
+      <span style="font-size:12px">* This video contains audio.</span>
+    </div> -->
+    
+  </div>
+</section>
+
+
+
+<section class="section is-light is-small">
+  <div class="container is-max-desktop">
+    <center><h2 class="title is-3">Approach Overview</h2></center>
+    <div class="hero-body">
+      <img src = "./static/images/motionr1-pipeline.png" height="100%"></img><br>
+    </div>
+  </div>
+    <!--/ Abstract. -->
+
+</section>
+
+
+<section class="hero is-small is-light">
+  <center><h2 class="title is-3">In-Distribution Prompts </h2></center>
+  <div class="hero-body">
+
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="column is-centered has-text-centered">
+          <p><b> "A person is <span style="color:#b23027;">throwing</span> something."</b></p><br><br>
+          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/video/In-Distribution/dataset2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-centered has-text-centered">
+          <p><b> "A person <span style="color:#b23027;">walks</span> <span style="color:#479454;">forcefully</span> forward 4 steps."</b></p><br><br>
+          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/video/In-Distribution/dataset3.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-centered has-text-centered">
+          <p><b> "A person is <span style="color:#b23027;">walking</span> <span style="color:#479454;">fast</span>."</b></p><br><br>
+          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/video/In-Distribution/dataset4.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-centered has-text-centered">
+          <p><b> "The person is <span style="color:#b23027;">walking</span> <span style="color:#479454;">slowly</span>."</b></p>
+          <br><br>
+          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/video/In-Distribution/dataset5.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-centered has-text-centered">
+          <p><b> "A man <span style="color:#b23027;">moves</span> <span style="color:#479454;">erratically</span>, like a marionette struggling to free itself from its strings."</b></p>
+          <br>
+          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/video/In-Distribution/dataset7.mp4" type="video/mp4">
+          </video>
+        </div>        
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <center><h2 class="title is-3">Out-of-Distribution Prompts</h2></center><br>
+    <p>
+      We showcase Motion-R1's capability to generate diverse and high-quality motions for out-of-distribution prompts.
+    </p>
+    <br>
+    <h3 class="title is-4">Complex Text</h2>
+    <div class="columns is-centered">
+      <div class="column">
+        <div id="video-container">
+          <center><p><b> "After <span style="color:#b23027;">hearing</span> a loud noise, a person <span style="color:#b23027;">turned around</span> , <span style="color:#b23027;">stepped back</span> <span style="color:#479454;">cautiously</span> with hands <span style="color:#b23027;">raised</span> <span style="color:#479454;">defensively</span> and then <span style="color:#b23027;">slowly</span> <span style="color:#479454;">approached</span>."</b></p></center>
+          <video id="video" controls muted loop playsinline height="40%">
+              <source src="./static/video/complex/complex2.mp4"
+                      type="video/mp4">
+            </video>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+          <center><p><b> "A person <span style="color:#b23027;">takes</span> a few <span style="color:#b23027;">steps</span> forward, <span style="color:#b23027;">jumps</span> forward <span style="color:#479454;">with both feet</span> , and <span style="color:#479454;">immediately</span> <span style="color:#b23027;">turns</span> right upon landing"</b></p></center>
+          <br>
+          <video poster="" id="push" controls muted loop playsinline height="40%">
+              <source src="./static/video/complex/complex3.mp4"
+                      type="video/mp4">
+            </video>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column">
+        <div id="video-container">
+          <center><p><b> "A person <span style="color:#b23027;">raises arms</span>, <span style="color:#b23027;">arches back</span>  <span style="color:#479454;">slightly</span>, then <span style="color:#b23027;">shifts weight</span> onto the right leg while <span style="color:#b23027;">extending the left leg backward</span> <span style="color:#479454;">in a poised arabesque position</span>."</b></p></center>
+          <video id="video" controls muted loop playsinline height="40%">
+              <source src="./static/video/complex/complex5.mp4"
+                      type="video/mp4">
+            </video>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+          <center><p><b> "A person <span style="color:#b23027;">jumped up</span> <span style="color:#479454;">happily</span>, <span style="color:#b23027;">raised hand</span> and <span style="color:#b23027;">spsun</span> <span style="color:#479454;">excitedly</span>."</b></p></center>
+          <br>
+          <video poster="" id="push" controls muted loop playsinline height="40%">
+              <source src="./static/video/complex/complex1.mp4"
+                      type="video/mp4">
+            </video>
+        </div>
+      </div>
+    </div>
+    <h3 class="title is-4">Abstract Text</h2>
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <center><p><b>"A person is <span style="color:#b23027;">serving in badminton</span> ."</b></p></center>
+          <video poster="" id="standing" controls muted loop playsinline height="40%">
+              <source src="./static/video/abstract/abstract1.mp4"
+                      type="video/mp4">
+            </video>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+          <center><p><b>"A person is <span style="color:#b23027;">skipping rope</span>."</b></p></center>
+          <video poster="" id="warmup" controls muted loop playsinline height="40%">
+              <source src="./static/video/abstract/abstract3.mp4"
+                      type="video/mp4">
+            </video>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <center><p><b>"A person is <span style="color:#b23027;">dancing ballroom</span> dance."</b></p></center>
+          <video poster="" id="standing" controls muted loop playsinline height="40%">
+              <source src="./static/video/abstract/abstract4.mp4"
+                      type="video/mp4">
+            </video>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+          <center><p><b>"The person <span style="color:#b23027;">walks</span> <span style="color:#479454;">as if balancing on a tightrope</span>."</b></p></center>
+          <video poster="" id="warmup" controls muted loop playsinline height="40%">
+              <source src="./static/video/abstract/abstract6.mp4"
+                      type="video/mp4">
+            </video>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <center><p><b>"The person <span style="color:#b23027;">mimics swimming</span> in mid-air, as if performing a <span style="color:#479454;">freestyle stroke</span> without water."</b></p></center>
+          <video poster="" id="standing" controls muted loop playsinline height="40%">
+              <source src="./static/video/abstract/abstract8.mp4"
+                      type="video/mp4">
+            </video>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+          <center><p><b>"The person <span style="color:#b23027;">walks</span> through strong wind, <span style="color:#b23027;">leans forward</span> and <span style="color:#b23027;">braces</span> against resistance."</b></p></center>
+          <video poster="" id="warmup" controls muted loop playsinline height="40%">
+              <source src="./static/video/abstract/abstract9.mp4"
+                      type="video/mp4">
+            </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Animation. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <center><h2 class="title is-3">MotionCoT Data Example</h2></center>
+        <br>
+        <div class="content has-text-justified">
+          <p>
+            Given the prompt ''A person does Tai chi.'' the LLM generates a step-by-step CoT reasoning trace (<span style="font-family: monospace;">&lt;think&gt;</span>) and a structured action plan <span style="font-family: monospace;">&lt;output&gt;</span>, covering stance, arm movement, weight transfer, and hand positioning. 
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <!-- <div class="publication-video"> -->
+            <img src = "./static/images/motionr1-cot.png" height="100%"></img><br>
+          <!-- </div> -->
+        </div>
+      </div>
+    </div>
+    <!--/ Animation. -->
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <center><h2 class="title is-3">Comparisons</h2></center>
+    <br>
+    <div class="content has-text-justified">
+      <p>
+        We compare Motion-R1 against baselines such as MoMask and MotionLLM. As shown in Left of Figure, Motion-R1 produces smooth, well-structured sequences for simple and multi-step instructions. To evaluate generalization beyond the training distribution, we present qualitative comparisons under two types of out-of-distribution captions, as shown in middle and right of Figure. 
+        <!-- For example, given ''A person walks in a circle.'' our method generates a continuous loop with clear orientation change and natural timing, while MotionLLM fails to complete a full circle or exhibits abrupt terminations.  -->
+      <!-- <br> -->
+        <!-- The first prompt describes a complex, multi-stage action with implicit causal logic: ''After hearing a loud noise, a person turned around, stepped back cautiously with hands raised defensively, and then slowly approached.'' Motion-R1 captures this chain of reactions in a temporally coherent manner, clearly separating reaction, retreat, and re-approach. In contrast, MotionLLM either merges steps or lacks defensive gestures, resulting in an incomplete or disordered motion sequence. -->
+        <!-- <br> -->
+        <!-- The second prompt — ''A person is serving in badminton'' — involves abstract semantics and task-specific dynamics. Motion-R1 synthesizes a plausible serve-like motion, including arm lifting, body shift, and a forward striking gesture, resembling real badminton actions. MotionLLM, however, produces repetitive or generic motions lacking physical intent or domain alignment. -->
+      </p>
+
+
+      <img src="./static/images/motionr1-comparison.png" height="100%"></img><br>
+      <!-- <div class="content has-text-centered">
+        <video id="replay-video"
+               controls
+               muted
+               preload
+               playsinline
+               width="100%">
+          <source src="./static/video/comparison.mp4#t=0.01"
+                  type="video/mp4">
+        </video>
+      </div> -->
+    </div>
+  </div>
+  
+</section>
+
+
+<section class="section is-light">
+  <div class="container is-max-desktop">
+    <center><h2 class="title is-3">Related Motion Generation Works &#128640&#128640</h2></center><br>
+    <div class="content has-text-justified">
+    <a href="https://ericguo5513.github.io/text-to-motion/"><b>Text2Motion</b></a>: Diverse text-driven motion generation using temporal variational autoencoder.<br>   
+    <a href="https://ericguo5513.github.io/TM2T/"><b>TM2T</b></a>: Learning text2motion and motion2text reciprocally through discrete token and language model.<br> 
+    <a href="https://ericguo5513.github.io/momask/"><b>MoMask</b></a>: Generative Masked Modeling of 3D Human Motions <br>
+    </div>
+  </div>
+  
+</section>
+
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre>
+      <code>
+        <!-- TODO: add bibtex -->
+      </code>
+</pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="columns is-centered">
+    <div class="column is-8">
+      <div class="content">
+        <!-- <p><sup><b>*</b></sup> These authors contributed to this work equally.</p> -->
+        <!-- <p><sup><b>†</b></sup> Corresponding authors. <a href="mailto:zhengzhu@ieee.org">zhengzhu@ieee.org</a>, <a href="mailto:xingang.wang@ia.ac.cn">xingang.wang@ia.ac.cn</a></p> -->
+        <p>
+          This website is licensed under a <a rel="license"
+          href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+        Commons Attribution-ShareAlike 4.0 International License</a>.
+      </p>
+      <p>
+        Website source code based on the <a href="https://ericguo5513.github.io/momask/"> MoMask</a> project page. If you want to reuse their <a
+        href="https://ericguo5513.github.io/momask/">source code</a>, please credit them appropriately.
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+</footer>
+
+<script>
+      var videoContainer = document.getElementById('video-container');
+      var video = document.getElementById('video');
+
+      var videoOffset = videoContainer.offsetTop;
+
+      window.addEventListener('scroll', function() {
+        var scrollPosition = window.scrollY || window.pageYOffset;
+
+        if (scrollPosition >= videoOffset) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      });
+    </script>
+
+</body>
+</html>
